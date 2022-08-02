@@ -9,7 +9,7 @@ export default {
 
 <template>
   <div
-    class="flex flex-col justify-center items-center p-2 min-h-full relative"
+    class="flex flex-col justify-center items-center p-2 md:min-h-[85vh] relative"
   >
     <h1 class="text-3xl font-bold">No Entry Selected</h1>
     <img

@@ -1,17 +1,56 @@
 <script>
 import Fab from "../components/Fab";
+import { formatDate } from "../helpers/formatDate";
+import { mapGetters } from "vuex";
+
 export default {
+  props: {
+    id: {
+      type: String,
+      required: true,
+    },
+  },
+  data() {
+    return {
+      entry: null,
+    };
+  },
   components: {
     Fab,
+  },
+  computed: {
+    ...mapGetters("journal", ["getEntryByID"]),
+    date() {
+      const date = formatDate(this.entry.date);
+      return date;
+    },
+  },
+  methods: {
+    loadEntry() {
+      const entry = this.getEntryByID(this.id);
+      if (!entry) this.$router.push({ name: "noEntry" });
+      this.entry = entry;
+    },
+  },
+  created() {
+    this.loadEntry();
+  },
+  watch: {
+    id() {
+      this.loadEntry();
+    },
   },
 };
 </script>
 
 <template>
-  <div class="shadow-lg min-h-full p-5 border-2 rounded relative">
+  <div
+    v-if="entry"
+    class="shadow-lg md:min-h-[85vh] p-5 border-2 rounded relative"
+  >
     <div class="flex flex-col lg:flex-row gap-2 justify-between">
       <h1 class="font-bold text-3xl text-green-800">
-        <span>15th </span><span>July </span><span>2022</span>
+        <p>{{ date }}</p>
       </h1>
       <div class="flex gap-4">
         <button
@@ -34,10 +73,11 @@ export default {
         <textarea
           id="text"
           placeholder="What happened today?"
+          v-model="entry.text"
           class="rounded w-full py-2 px-3 text-gray-700 leading-tight min-h-[20vh] md:min-h-[50vh]"
         ></textarea>
       </div>
-      <div>
+      <div v-if="entry.picture">
         <label class="font-semibold">Image</label>
         <img
           src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/13/83/4a/64/grand-canyon-national.jpg?w=1200&h=-1&s=1"

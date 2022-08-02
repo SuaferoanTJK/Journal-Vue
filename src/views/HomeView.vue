@@ -1,7 +1,6 @@
 <script>
 export default {
   name: "HomeView",
-  components: {},
   methods: {
     goToDaybook() {
       this.$router.push({ name: "noEntry" });
