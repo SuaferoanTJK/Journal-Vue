@@ -11,7 +11,10 @@ export default {
 </script>
 
 <template>
-  <button class="bg-slate-600 hover:bg-slate-500 rounded-[100%] p-3">
+  <button
+    @click="$emit('on:click')"
+    class="bg-slate-600 hover:bg-slate-500 rounded-[100%] p-3"
+  >
     <i class="fa fa-2x text-white" :class="icon"></i>
   </button>
 </template>

@@ -4,6 +4,11 @@ export default {
   components: {
     Fab,
   },
+  methods: {
+    createNewEntry() {
+      this.$router.push({ name: "entry", params: { id: "new" } });
+    },
+  },
 };
 </script>
 
@@ -17,6 +22,6 @@ export default {
       alt="NoEntry"
       class="text-center w-80 lg:w-[500px]"
     />
-    <Fab class="absolute bottom-0 right-0" />
+    <Fab @on:click="createNewEntry" class="absolute bottom-0 right-0" />
   </div>
 </template>
