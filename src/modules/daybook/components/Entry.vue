@@ -27,7 +27,7 @@ export default {
   <div class="p-4 bg-white rounded my-4 mr-2 shadow-lg border">
     <div
       @click="$router.push({ name: 'entry', params: { id: entry.id } })"
-      class="font-semibold text-lg cursor-pointer hover:underline"
+      class="entryContainer font-semibold text-lg cursor-pointer hover:underline"
     >
       <p>{{ date }}</p>
     </div>

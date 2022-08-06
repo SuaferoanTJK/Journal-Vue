@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Home View Unit Testing Should render the component 1`] = `
+<div>
+  <h1>This is home page</h1><button>Go to Daybook</button>
+</div>
+`;

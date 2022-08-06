@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EntryView Unit Testing Should display entry 1`] = `
+<div class="shadow-lg md:min-h-[85vh] p-5 border-2 rounded relative">
+  <div class="flex flex-col lg:flex-row gap-2 justify-between">
+    <h1 class="font-bold text-3xl text-green-800">
+      <p>Thursday, August 04, 2022</p>
+    </h1>
+    <div class="flex flex-col gap-4"><input type="file" accept="image/png, image/jpeg, image/jpg" style="display: none;">
+      <div class="flex gap-2 justify-between"><button class="deleteBtn w-full h-12 items-center text-sm bg-red-600 hover:bg-red-700 py-1 px-3 text-white font-semibold rounded"> Delete </button><button class="w-full h-12 items-center text-sm bg-lime-600 hover:bg-lime-700 py-1 px-3 text-white font-semibold rounded"> Upload photo </button></div>
+    </div>
+  </div>
+  <div class="mt-3">
+    <div><label for="text" class="font-semibold">Text</label><textarea id="text" placeholder="What happened today?" class="rounded w-full py-2 px-3 text-gray-700 leading-tight min-h-[20vh] md:min-h-[50vh]"></textarea></div>
+    <!--v-if-->
+    <!--v-if-->
+    <fab-stub icon="fa-save" class="absolute bottom-3 right-3"></fab-stub>
+  </div>
+</div>
+`;

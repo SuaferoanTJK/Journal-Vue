@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Entry Unit Testing Should match with snapshot 1`] = `
+<div class="p-4 bg-white rounded my-4 mr-2 shadow-lg border">
+  <div class="entryContainer font-semibold text-lg cursor-pointer hover:underline">
+    <p>Thursday, August 04, 2022</p>
+  </div>
+  <p>Hi world V2</p>
+</div>
+`;

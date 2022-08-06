@@ -6,6 +6,7 @@ import { formatDate } from "../helpers/formatDate";
 import uploadImage from "../helpers/uploadImage";
 
 export default {
+  name: "EntryView",
   props: {
     id: {
       type: String,
@@ -45,7 +46,7 @@ export default {
       this.entry = entry;
     },
     async saveEntry() {
-      new Swal({
+      Swal.fire({
         title: "Please wait",
         allowOutsideClick: false,
       });
@@ -71,7 +72,7 @@ export default {
         confirmButtonText: "Yes, I'm sure",
       });
       if (isConfirmed) {
-        new Swal({
+        Swal.fire({
           title: "Please wait",
           allowOutsideClick: false,
         });
@@ -129,7 +130,7 @@ export default {
           <button
             v-if="entry.id"
             @click="onDeleteEntry"
-            class="w-full h-12 items-center text-sm bg-red-600 hover:bg-red-700 py-1 px-3 text-white font-semibold rounded"
+            class="deleteBtn w-full h-12 items-center text-sm bg-red-600 hover:bg-red-700 py-1 px-3 text-white font-semibold rounded"
           >
             Delete
           </button>

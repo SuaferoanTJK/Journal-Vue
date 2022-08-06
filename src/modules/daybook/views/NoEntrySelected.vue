@@ -1,6 +1,7 @@
 <script>
 import Fab from "@/modules/daybook/components/Fab.vue";
 export default {
+  name: "NoEntrySelected",
   components: {
     Fab,
   },
