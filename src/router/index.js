@@ -1,21 +1,16 @@
 import { createRouter, createWebHashHistory } from "vue-router";
-import HomeView from "../views/HomeView.vue";
+import authRouter from "@/modules/auth/router";
 import daybookRouter from "@/modules/daybook/router";
+import isAuthenticated from "@/modules/auth/router/authGuard";
 
 const routes = [
   {
     path: "/",
-    name: "home",
-    component: HomeView,
-  },
-  {
-    path: "/about",
-    name: "about",
-    component: () =>
-      import(/* webpackChunkName: "about" */ "../views/AboutView.vue"),
+    ...authRouter,
   },
   {
     path: "/daybook",
+    beforeEnter: [isAuthenticated],
     ...daybookRouter,
   },
 ];

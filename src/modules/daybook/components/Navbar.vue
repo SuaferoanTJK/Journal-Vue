@@ -1,15 +1,26 @@
 <script>
+import { ref } from "@vue/reactivity";
+import { useRouter } from "vue-router";
+import useAuth from "@/modules/auth/composables/useAuth";
+
 export default {
   name: "Nav-Component",
-  data() {
+  setup() {
+    const hidden = ref(true);
+    const router = useRouter();
+    const { username, logout } = useAuth();
+
     return {
-      hidden: true,
+      hidden,
+      username,
+      dropdown: () => {
+        hidden.value = !hidden.value;
+      },
+      onLogout: () => {
+        router.push({ name: "login" });
+        logout();
+      },
     };
-  },
-  methods: {
-    dropdown() {
-      this.hidden = !this.hidden;
-    },
   },
 };
 </script>
@@ -22,7 +33,7 @@ export default {
       <router-link to="/" class="flex items-center">
         <img src="@/assets/logo.png" class="mr-3 h-6 sm:h-9" alt="Vue Logo" />
         <span class="self-center text-xl font-semibold whitespace-nowrap">
-          Journal
+          {{ username }}
         </span>
       </router-link>
       <button
@@ -51,12 +62,12 @@ export default {
           class="flex flex-col p-4 mt-4 bg-gray-50 rounded-lg border border-gray-100 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-white"
         >
           <li class="flex gap-3 items-center text-slate-700 hover:text-sky-700">
-            <a
-              href="#"
+            <button
+              @click="onLogout"
               class="block py-2 pr-4 pl-3 rounded md:bg-transparent md:p-0"
             >
               Logout
-            </a>
+            </button>
             <i class="fa-solid fa-arrow-right-from-bracket"></i>
           </li>
         </ul>
