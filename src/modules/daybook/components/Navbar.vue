@@ -30,7 +30,7 @@ export default {
     <div
       class="container flex flex-wrap justify-between items-center md:w-10/12 mx-auto"
     >
-      <router-link to="/" class="flex items-center">
+      <router-link to="/daybook" class="flex items-center">
         <img src="@/assets/logo.png" class="mr-3 h-6 sm:h-9" alt="Vue Logo" />
         <span class="self-center text-xl font-semibold whitespace-nowrap">
           {{ username }}
