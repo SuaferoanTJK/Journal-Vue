@@ -1,6 +1,7 @@
 import { createStore } from "vuex";
-import journal from "@/modules/daybook/store/journal";
-import { journalState } from "./mock-data/test-journal-state";
+import journal from "@/modules/daybook/store";
+import authApi from "@/api/authApi";
+import { journalState } from "../../../mock-data/test-journal-state";
 
 const createVuexStore = (initialState) =>
   createStore({
@@ -13,11 +14,19 @@ const createVuexStore = (initialState) =>
   });
 
 describe("Journal Vuex Unit Testing", () => {
+  beforeAll(async () => {
+    const { data } = await authApi.post("accounts:signInWithPassword", {
+      email: "test@test.com",
+      password: "123456",
+      returnSecureToken: true,
+    });
+    localStorage.setItem("idToken", data.idToken);
+  });
   let store;
   beforeEach(() => {
     store = createVuexStore(journalState);
   });
-  // Basics
+  // Initial State
   test("Initial State should be this one", () => {
     const { isLoading, entries } = store.state.journal;
     expect(isLoading).toBeFalsy();
@@ -81,6 +90,6 @@ describe("Journal Vuex Unit Testing", () => {
     const store = createVuexStore({ isLoading: true, entries: [] });
     await store.dispatch("journal/loadEntries");
     const storeEntries = store.state.journal.entries;
-    expect(storeEntries.length).toBe(3);
+    expect(storeEntries.length).toBe(2);
   });
 });

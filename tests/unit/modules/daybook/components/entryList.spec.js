@@ -1,8 +1,8 @@
 import { createStore } from "vuex";
 import { shallowMount } from "@vue/test-utils";
 import EntryList from "@/modules/daybook/components/EntryList.vue";
-import journal from "@/modules/daybook/store/journal";
-import { journalState } from "../store/journal/mock-data/test-journal-state";
+import journal from "@/modules/daybook/store";
+import { journalState } from "../../../mock-data/test-journal-state";
 
 const createVuexStore = (initialState) =>
   createStore({

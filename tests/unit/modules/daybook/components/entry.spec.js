@@ -1,6 +1,6 @@
 import { shallowMount } from "@vue/test-utils";
 import Entry from "@/modules/daybook/components/Entry.vue";
-import { journalState } from "../store/journal/mock-data/test-journal-state";
+import { journalState } from "../../../mock-data/test-journal-state";
 
 describe("Entry Unit Testing", () => {
   const mockRouter = {
